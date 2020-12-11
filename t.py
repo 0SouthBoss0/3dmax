@@ -1,27 +1,22 @@
-print("Введите количество учеников: ")
-num = int(input())
-index = 0
-min = 99999999
+def search(A, key):
+    for i in range(len(A)):
+        if A[i] == key:
+            return True
+    return False
+
+
+input1 = list(map(int, input().split()))
+n = input1[0]
+q = input1[1]
 arr = []
-arr2 = []
-arr3 = []
 
-print("Введите данные учеников в формате Фамилия Имя Балл: ")
-for i in range(num):
-    arr.append(str(input()))
+input2 = list(map(int, input().split()))
+for i in range(q):
+    arr.append(int(input()))  # ввод
 
-for i in range(num):
-    q = arr[i]
-    q = q.split()
-    arr2.append(q[0])
-    arr2.append(q[1])
-    arr3.append(int(q[2]))
-
-for i in range(len(arr3)):
-    if arr3[i] < min:
-        index = i
-        min = arr3[i]
-
-for i in range(len(arr2)):
-    print("Минимум: ", arr2[index * 2], arr2[(index * 2) + 1])
-    exit(0)
+input2.sort()  # словарь
+for i in range(len(arr)):
+    if search(input2, arr[i]):
+        print("YES")
+    else:
+        print("NO")
