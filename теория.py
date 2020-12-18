@@ -1,7 +1,8 @@
 # 1 2 3 4 5 -> [1, 2, 3, 4, 5]
 a = list(map(int, input().split()))
-
-# запись и чтение файла
+#########################
+# запись и чтение файла #
+#########################
 f = open('input.txt', 'r')
 w = open('output.txt', 'w')
 
@@ -15,14 +16,40 @@ for i in range(len(arr)):
 w.write(str(max))
 f.close()
 w.close()
+########################
+# игры с чтением файла #
+########################
+f = open('qq.txt', 'r', -1, 'utf-8')
+f_5 = f.read(3)
+f.close()
 
-# заполнение массива змейкой
+print(f_5)
 
+f = open('qq.txt', 'r', -1, 'utf-8')
+f_all = f.read()
+f.close()
+
+print(f_all)
+print('---------')
+
+f = open('qq.txt', 'r', -1, 'utf-8')
+for line in f:
+    print(line, end='')
+f.close()
+
+f = open('qq.txt', 'w', -1, 'utf-8')
+f.write("А тебе пока")
+f.close()
+
+f = open('qq.txt', 'r', -1, 'utf-8')
+f_all = f.read()
+f.close()
+print("")
+print(f_all)
+##############################
+# заполнение массива змейкой #
+##############################
 n = int(input())
 m = int(input())
 for j in range(n):
     print(' '.join([str(i + 1 + m * j) for i in range(m)][::pow(-1, j)]))
-
-
-
-
