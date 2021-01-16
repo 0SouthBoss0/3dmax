@@ -53,3 +53,10 @@ n = int(input())
 m = int(input())
 for j in range(n):
     print(' '.join([str(i + 1 + m * j) for i in range(m)][::pow(-1, j)]))
+##############################
+#    нормальное округление   #
+##############################
+def normal_round(n):
+    if n - math.floor(n) < 0.5:
+        return math.floor(n)
+    return math.ceil(n)
