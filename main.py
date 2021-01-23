@@ -1,20 +1,39 @@
-def split(word):
-    return [char for char in word]
+def isInt(n):
+    return int(n) == float(n)
 
 
 arr = []
 
-count = 0
+a = list(map(int, input().split()))
 
-f = open('24_demo.txt', 'r')
-fall = f.read()
-a = split(fall)
+fin = a[0]
+half = a[1]
+k = a[2]
+arr.append(0)
+for i in range(fin):  # ВСЕ I + 1
+    i = i + 1
 
-for i in range(len(a) - 1):
-    if a[i] != a[i + 1]:
-        count += 1
-        arr.append(count + 1)
+    if i == 1:
+        arr.append(1)
     else:
-        count = 0
+        q = i / k
+        w = i - 1
 
-print(max(arr))
+        if i > half:
+            if int(q) >= half and isInt(q):
+                arr.append(arr[int(q)]+arr[w])
+            else:
+                arr.append(arr[w])
+
+        if i <= half:
+            if isInt(q):
+                arr.append(arr[int(q)] + arr[w])
+            else:
+                arr.append(arr[w])
+
+for i in range(len(arr)):
+    print(i, arr[i])
+
+print("-------------")
+print("ОТВЕТ =", max(arr))
+print("-------------")
