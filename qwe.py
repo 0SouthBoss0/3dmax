@@ -1,3 +1,8 @@
+import sys
+
+sys.setrecursionlimit(10 ** 6)
+
+
 def find_on_row(way, array, way_index, row_index):
     if way_index == len(way):  # found answer
         return []
@@ -5,7 +10,7 @@ def find_on_row(way, array, way_index, row_index):
         if array[row_index][col_index] == way[way_index]:
             candidate_answer = find_on_col(way, array, way_index + 1, col_index)
             if not candidate_answer is None:  # unwind answer
-                return [col_index+1] + candidate_answer
+                return [col_index + 1] + candidate_answer
     return None
 
 
@@ -16,22 +21,34 @@ def find_on_col(way, array, way_index, col_index):
         if array[row_index][col_index] == way[way_index]:
             candidate_answer = find_on_row(way, array, way_index + 1, row_index)
             if not candidate_answer is None:  # unwind answer
-                return [row_index+1] + candidate_answer
+                return [row_index + 1] + candidate_answer
     return None
 
 
-way = []
-waylen = int(input())
-wayin = list(map(str, input().split()))
-for i in range(waylen):
-    way.append(wayin[i])
-k = int(input())
-array = [[0 for j in range(k)] for i in range(k)]
+otvet = []
+num = int(input())
 
-for i in range(k):
-    a = list(map(str, input().split()))
-    for j in range(k):
-        array[i][j] = a[j]
+for qwewer in range(num):
+    xx = str(input())
+    way = []
+    waylen = int(input())
+    wayin = list(map(str, input().split()))
+    for i in range(waylen):
+        way.append(wayin[i])
+    k = int(input())
+    array = [[0 for j in range(k)] for i in range(k)]
 
-print(f'{find_on_row(way, array, 0, 0)}')
+    for i in range(k):
+        a = list(map(str, input().split()))
+        for j in range(k):
+            array[i][j] = a[j]
 
+    otvet.append(f'{find_on_row(way, array, 0, 0)}')
+
+bad_chars = ['[', ']', ',']
+for i in range(num):
+    aaa = str(otvet[i])
+    my_str = aaa
+    for x, y in ("[", ""), ("]", ""), (",", ""):
+        my_str = my_str.replace(x, y)
+    print(my_str)
