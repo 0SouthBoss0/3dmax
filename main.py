@@ -41,3 +41,4 @@ for i in range(cout):
 
 for i in range(len(OTVET)):
     print(OTVET[i])
+ads=int(input())
