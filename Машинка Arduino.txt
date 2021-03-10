@@ -1,0 +1,48 @@
+// первая часть кода, объявление переменных  
+// мотор 1 (подключенный к драйверу) 
+int enA = 9; //отвечает за включение  
+int in1 = 8; // управление двигателем (направление) 
+int in2 = 7; // управление двигателем  (направление) 
+ 
+int enB = 5; // отвечает за включение  
+int in3 = 4; // управление двигателем (направление) 
+int in4 = 3; // управление двигателем  (направление) 
+ 
+//вторая часть кода. настройки. код этого блока запустится один раз 
+void setup() { 
+ 
+  pinMode(enA, OUTPUT); //пины настроены на выходной сигнал (14-19 строки) 
+  pinMode(enB, OUTPUT); 
+  pinMode(in1, OUTPUT); 
+  pinMode(in2, OUTPUT); 
+  pinMode(in3, OUTPUT); 
+  pinMode(in4, OUTPUT); 
+   
+// Команда остановки двум моторам 
+ 
+  digitalWrite(in1, LOW); 
+  digitalWrite(in2, LOW); 
+  digitalWrite(in3, LOW); 
+  digitalWrite(in4, LOW); 
+   
+  delay (3000); //после включения машина 3 сек не двигается 
+   
+} 
+// третья часть кода "петля", в ней сама программа и выполняться она будет неоднократно 
+
+void loop() { 
+ 
+  analogWrite(enA, 30); // мощность мотора (от 0 до 255) 
+  analogWrite(enB, 30); 
+   
+  digitalWrite(in1, HIGH); //движение вперёд 
+  digitalWrite(in2, LOW);  
+  digitalWrite(in3, HIGH);  
+  digitalWrite(in4, LOW);  
+   
+  delay(3000); // задержка 3 сек (будет столько ехать вперёд) 
+   
+  analogWrite(enA, 0); //выкл мотор 
+  analogWrite(enB, 0); // выкл мотор 
+  delay(10000);
+}
